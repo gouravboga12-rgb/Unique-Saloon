@@ -38,6 +38,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -46,6 +47,7 @@ body {
   background-color: var(--bg-light);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1605,10 +1607,14 @@ textarea.form-control {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  z-index: 999;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+  z-index: 9999;
   cursor: pointer;
   transition: var(--transition-smooth);
+  /* Never let AOS or overflow hide this */
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none;
 }
 
 .floating-whatsapp:hover {
@@ -1651,7 +1657,7 @@ textarea.form-control {
   height: 65px;
   background-color: var(--dark-charcoal);
   border-top: 2.5px solid var(--primary-gold);
-  z-index: 998;
+  z-index: 9998;
   box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -1957,12 +1963,26 @@ textarea.form-control {
     text-align: center;
   }
   
-  /* Floating WhatsApp positioning on mobile */
+  /* Add padding at bottom so last content isn't hidden behind sticky CTA bar */
+  main {
+    padding-bottom: 65px;
+  }
+
+  /* Show mobile sticky CTA bar on mobile */
+  .mobile-sticky-cta {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Floating WhatsApp: sit above the 65px sticky CTA bar + extra gap */
   .floating-whatsapp {
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+    bottom: 80px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+    z-index: 9999;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
 

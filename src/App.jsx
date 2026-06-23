@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import MobileStickyCTA from './components/MobileStickyCTA';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -20,9 +21,14 @@ export default function App() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000,
+      duration: 800,
       once: true,
       easing: 'ease-out-cubic',
+      offset: 50,
+      disable: function() {
+        // Disable AOS on small mobile screens to prevent elements staying hidden
+        return window.innerWidth < 768;
+      }
     });
   }, []);
 
@@ -57,6 +63,7 @@ export default function App() {
       </main>
       <Footer setCurrentPage={setCurrentPage} navigateToSection={navigateToSection} />
       <FloatingWhatsApp />
+      <MobileStickyCTA />
     </>
   );
 }
