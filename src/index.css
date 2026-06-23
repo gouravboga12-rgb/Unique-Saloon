@@ -50,6 +50,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Offset fixed header — desktop header is ~80px tall */
+main {
+  padding-top: 80px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headings);
   color: var(--dark-charcoal);
@@ -176,15 +181,17 @@ img {
 
 /* Header & Navigation */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: rgba(17, 17, 17, 0.98);
   border-bottom: 1px solid rgba(212, 175, 55, 0.25);
-  z-index: 1000;
-  box-shadow: var(--shadow-subtle);
+  z-index: 10000;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   transition: var(--transition-smooth);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .nav-container {
@@ -1736,6 +1743,11 @@ textarea.form-control {
 
 /* Mobile Devices (Tablet Portrait down to Phone) */
 @media (max-width: 768px) {
+  /* Mobile header is ~75px tall */
+  main {
+    padding-top: 75px;
+  }
+
   .nav-logo-img {
     height: 70px;
   }

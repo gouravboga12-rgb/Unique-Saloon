@@ -1,12 +1,22 @@
 import React from 'react';
 
 export default function Footer({ setCurrentPage, navigateToSection }) {
-  const navigateTo = (page, sectionId = null) => {
+  // Navigate to a page and always scroll to top
+  const goToPage = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Navigate to a page then scroll to a specific section
+  const goToSection = (page, sectionId) => {
     if (navigateToSection) {
       navigateToSection(page, sectionId);
     } else {
       setCurrentPage(page);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
     }
   };
 
@@ -15,7 +25,7 @@ export default function Footer({ setCurrentPage, navigateToSection }) {
       <div class="footer-grid">
         {/* Logo and Description */}
         <div class="footer-logo-panel">
-          <div onClick={() => navigateTo('home')} class="logo-wrapper" style={{ marginBottom: '1.25rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+          <div onClick={() => goToPage('home')} class="logo-wrapper" style={{ marginBottom: '1.25rem', cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
             <img src="/assets/images/logo.png" alt="THE UNIQUE SALON Logo" class="footer-logo-img" />
           </div>
           <p class="footer-about-text">THE UNIQUE SALON is Hyderabad's premier family grooming and beauty studio. For over 6 years, we have provided high-end haircuts, luxury facials, hair coloring treatments, and HD bridal makeovers.</p>
@@ -29,10 +39,10 @@ export default function Footer({ setCurrentPage, navigateToSection }) {
         <div>
           <h4 class="footer-title">Quick Links</h4>
           <ul class="footer-links">
-            <li><button onClick={() => navigateTo('home')} class="footer-link"><svg width="10" height="10" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>Home</button></li>
-            <li><button onClick={() => navigateTo('about')} class="footer-link"><svg width="10" height="10" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>About Us</button></li>
-            <li><button onClick={() => navigateTo('services')} class="footer-link"><svg width="10" height="10" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>Services Menu</button></li>
-            <li><button onClick={() => navigateTo('contact')} class="footer-link"><svg width="10" height="10" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>Contact Us</button></li>
+            <li><button onClick={() => goToPage('home')} class="footer-link"><svg width="10" height="10" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}><path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>Home</button></li>
+            <li><button onClick={() => goToPage('about')} class="footer-link"><svg width="10" height="10" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}><path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>About Us</button></li>
+            <li><button onClick={() => goToPage('services')} class="footer-link"><svg width="10" height="10" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}><path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>Services Menu</button></li>
+            <li><button onClick={() => goToPage('contact')} class="footer-link"><svg width="10" height="10" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}><path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>Contact Us</button></li>
           </ul>
         </div>
         
@@ -40,11 +50,11 @@ export default function Footer({ setCurrentPage, navigateToSection }) {
         <div>
           <h4 class="footer-title">Salon Services</h4>
           <ul class="footer-links">
-            <li><button onClick={() => navigateTo('services', 'hair-services')} class="footer-link">Hair Botox Treatment</button></li>
-            <li><button onClick={() => navigateTo('services', 'hair-services')} class="footer-link">Keratin Treatment</button></li>
-            <li><button onClick={() => navigateTo('services', 'makeup-services')} class="footer-link">Bridal / Groom Makeup</button></li>
-            <li><button onClick={() => navigateTo('services', 'beauty-services')} class="footer-link">Skin Facials & Cleanups</button></li>
-            <li><button onClick={() => navigateTo('services', 'mens-services')} class="footer-link">Men's Styling & Beard</button></li>
+            <li><button onClick={() => goToSection('services', 'hair-services')} class="footer-link">Hair Botox Treatment</button></li>
+            <li><button onClick={() => goToSection('services', 'hair-services')} class="footer-link">Keratin Treatment</button></li>
+            <li><button onClick={() => goToSection('services', 'makeup-services')} class="footer-link">Bridal / Groom Makeup</button></li>
+            <li><button onClick={() => goToSection('services', 'beauty-services')} class="footer-link">Skin Facials & Cleanups</button></li>
+            <li><button onClick={() => goToSection('services', 'mens-services')} class="footer-link">Men's Styling & Beard</button></li>
           </ul>
         </div>
         
@@ -82,7 +92,7 @@ export default function Footer({ setCurrentPage, navigateToSection }) {
       <div class="footer-bottom">
         <p>&copy; 2026 THE UNIQUE SALON. All Rights Reserved. Designed for High Conversions.</p>
         <div class="footer-bottom-links">
-          <span onClick={() => navigateTo('contact')}>Locate Us</span>
+          <span onClick={() => goToPage('contact')}>Locate Us</span>
           <a href="https://wa.me/919014540296" target="_blank" rel="noopener noreferrer">Bookings Help</a>
         </div>
       </div>
