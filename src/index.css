@@ -1647,18 +1647,9 @@ textarea.form-control {
   }
 }
 
-/* Mobile Sticky Bottom CTA Bar */
+/* Mobile Sticky Bottom CTA Bar - hidden on all devices */
 .mobile-sticky-cta {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 65px;
-  background-color: var(--dark-charcoal);
-  border-top: 2.5px solid var(--primary-gold);
-  z-index: 9998;
-  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
+  display: none !important;
 }
 
 .mobile-cta-grid {
@@ -1963,20 +1954,9 @@ textarea.form-control {
     text-align: center;
   }
   
-  /* Add padding at bottom so last content isn't hidden behind sticky CTA bar */
-  main {
-    padding-bottom: 65px;
-  }
-
-  /* Show mobile sticky CTA bar on mobile */
-  .mobile-sticky-cta {
-    display: flex;
-    align-items: center;
-  }
-
-  /* Floating WhatsApp: sit above the 65px sticky CTA bar + extra gap */
+  /* Floating WhatsApp on mobile */
   .floating-whatsapp {
-    bottom: 80px;
+    bottom: 24px;
     right: 16px;
     width: 52px;
     height: 52px;
