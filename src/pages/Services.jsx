@@ -103,7 +103,124 @@ export default function Services({ targetSection, setTargetSection }) {
         </div>
       </section>
 
-      {/* Services Content */}
+      {/* Category Navigator Cards */}
+      <section class="section section-bg-soft" id="services-category-nav" style={{ paddingBottom: '2rem' }}>
+        <div class="container-wide">
+          <div class="section-title-wrapper">
+            <span class="section-subtitle">Browse By Category</span>
+            <h2 class="section-title">What Are You Looking For?</h2>
+          </div>
+          <div class="featured-services-grid">
+            {/* Card 1: Hair Services */}
+            <article class="service-card">
+              <div class="service-card-img-wrapper">
+                <span class="service-card-tag">Hair Care</span>
+                <img src="/assets/images/services/hair_smoothening.png" alt="Premium Hair Treatments" class="service-card-img" width="380" height="240" />
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Premium Hair Treatments</h3>
+                <p class="service-card-desc">Keratin, Botox, Smoothening, Coloring, Hair Spa, and expert cuts — all under one roof with L'Oreal & Matrix products.</p>
+                <div class="service-card-footer" style={{ justifyContent: 'center' }}>
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById('hair-services');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    class="service-card-cta"
+                    aria-label="Go to Premium Hair Services"
+                  >
+                    Explore Category ➔
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            {/* Card 2: Bridal & Makeup */}
+            <article class="service-card">
+              <div class="service-card-img-wrapper">
+                <span class="service-card-tag">Makeup</span>
+                <img src="/assets/images/services/bridal_makeup.png" alt="Bridal & Special Occasions" class="service-card-img" width="380" height="240" />
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Bridal & Special Occasions</h3>
+                <p class="service-card-desc">HD Bridal Makeovers, Groom Grooming Packages, and premium special occasion styling for your most important days.</p>
+                <div class="service-card-footer" style={{ justifyContent: 'center' }}>
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById('makeup-services');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    class="service-card-cta"
+                    aria-label="Go to Special Makeup Packages"
+                  >
+                    Explore Category ➔
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            {/* Card 3: Beauty & Grooming */}
+            <article class="service-card">
+              <div class="service-card-img-wrapper">
+                <span class="service-card-tag">Grooming & Beauty</span>
+                <img src="/assets/images/services/beard_trim.png" alt="Haircuts, Grooming & Beauty" class="service-card-img" width="380" height="240" />
+              </div>
+              <div class="service-card-body">
+                <h3 class="service-card-title">Haircuts, Beauty & Grooming</h3>
+                <p class="service-card-desc">Precision haircuts, facials, waxing, eyebrow shaping, beard styling, manicure, pedicure, and threading — for the whole family.</p>
+                <div class="service-card-footer" style={{ justifyContent: 'center' }}>
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById('beauty-services');
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    class="service-card-cta"
+                    aria-label="Go to Beauty & Grooming Services"
+                  >
+                    Explore Category ➔
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          {/* Quick jump links */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center', marginTop: '2rem' }}>
+            {[
+              { label: '💇 Hair Services', id: 'hair-services' },
+              { label: '💅 Beauty & Skin', id: 'beauty-services' },
+              { label: '🧔 Men\'s Grooming', id: 'mens-services' },
+              { label: '👰 Bridal Makeup', id: 'makeup-services' },
+            ].map(({ label, id }) => (
+              <button
+                key={id}
+                onClick={() => {
+                  const el = document.getElementById(id);
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                style={{
+                  padding: '0.5rem 1.2rem',
+                  border: '1.5px solid var(--primary-gold)',
+                  borderRadius: '50px',
+                  background: 'transparent',
+                  color: 'var(--text-dark)',
+                  fontFamily: 'var(--font-body)',
+                  fontWeight: '600',
+                  fontSize: '0.85rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.25s ease',
+                }}
+                onMouseEnter={e => { e.target.style.background = 'var(--primary-gold)'; e.target.style.color = '#111'; }}
+                onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = 'var(--text-dark)'; }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Full Services Listings */}
       <section class="section" id="services-menu-section">
         <div class="container-wide">
           {renderServiceSection('💇 Premium Hair Services', 'Hair Care', "L'Oreal & Matrix Salon Partner", HAIR_SERVICES, 'hair-services')}
