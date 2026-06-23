@@ -93,7 +93,7 @@ export default function Footer({ setCurrentPage, navigateToSection }) {
         <p>&copy; 2026 THE UNIQUE SALON. All Rights Reserved. Designed for High Conversions.</p>
         <div class="footer-bottom-links">
           <span onClick={() => goToPage('contact')}>Locate Us</span>
-          <a href="https://wa.me/919014540296" target="_blank" rel="noopener noreferrer">Bookings Help</a>
+          <a href="https://wa.me/918500237031" target="_blank" rel="noopener noreferrer">Bookings Help</a>
         </div>
       </div>
     </footer>

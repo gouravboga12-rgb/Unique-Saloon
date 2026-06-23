@@ -46,7 +46,7 @@ export default function Contact() {
     e.preventDefault();
 
     const { name, phone, service, date, time, notes } = formData;
-    const whatsappNumber = '919014540296'; // India country code 91 + salon number 9014540296
+    const whatsappNumber = '918500237031'; // India country code 91 + salon number 8500237031
 
     // Construct the formatted WhatsApp booking message
     let message = `*APPOINTMENT BOOKING REQUEST*\n`;
@@ -127,7 +127,7 @@ export default function Contact() {
                   <h4>Call Bookings</h4>
                   <p>Phone: <a href="tel:9014540296">9014540296</a></p>
                   <p>Alternate: <a href="tel:8500237031">8500237031</a></p>
-                  <p>WhatsApp: <a href="https://wa.me/919014540296" target="_blank" rel="noopener noreferrer">9014540296</a></p>
+                  <p>WhatsApp: <a href="https://wa.me/918500237031" target="_blank" rel="noopener noreferrer">8500237031</a></p>
                 </div>
               </div>
               

@@ -37,7 +37,7 @@ function HomeContactSection() {
     message += `🕒 *Preferred Time:* ${time}\n`;
     if (notes.trim()) message += `📝 *Notes:* ${notes}\n`;
     message += `--------------------------------------\nSent from THE UNIQUE SALON website.`;
-    window.open(`https://wa.me/919014540296?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/918500237031?text=${encodeURIComponent(message)}`, '_blank');
     setFormData({ name: '', phone: '', service: HOME_SERVICES_LIST[0], date: '', time: '', notes: '' });
   };
 
@@ -78,7 +78,7 @@ function HomeContactSection() {
                   <h4>Call Bookings</h4>
                   <p>Phone: <a href="tel:9014540296">9014540296</a></p>
                   <p>Alternate: <a href="tel:8500237031">8500237031</a></p>
-                  <p>WhatsApp: <a href="https://wa.me/919014540296" target="_blank" rel="noopener noreferrer">9014540296</a></p>
+                  <p>WhatsApp: <a href="https://wa.me/918500237031" target="_blank" rel="noopener noreferrer">8500237031</a></p>
                 </div>
               </div>
               <div class="contact-info-card">
@@ -297,7 +297,7 @@ export default function Home({ setCurrentPage, navigateToSection }) {
           <h1 class="hero-title">Transform Your Style with Professional Hair & Beauty Experts</h1>
           <p class="hero-text">6+ Years of Excellence in Hair, Beauty, Grooming & Makeup Services in Hyderabad. Affordable luxury tailored for families, brides, and grooming enthusiasts.</p>
           <div class="hero-actions">
-            <a href="https://wa.me/919014540296?text=Hi%2C%20The%20Unique%20Salon.%20I'd%20like%20to%20book%20an%20appointment!" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" id="hero-whatsapp-btn">
+            <a href="https://wa.me/918500237031?text=Hi%2C%20The%20Unique%20Salon.%20I'd%20like%20to%20book%20an%20appointment!" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" id="hero-whatsapp-btn">
               <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}>
                 <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.949h.004c4.368 0 7.927-3.558 7.93-7.927a7.86 7.86 0 0 0-2.327-5.596zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.69-4.98c-.202-.101-1.202-.594-1.392-.658-.189-.069-.327-.103-.465.101-.138.203-.534.659-.653.793-.12.134-.239.151-.44.051-.2-.1-0.849-.312-1.616-.997-.598-.533-.999-1.193-1.117-1.396-.118-.2-.013-.309.088-.409.09-.09.201-.234.301-.35.1-.117.133-.198.2-.33.067-.133.033-.25-.017-.35-.05-.101-.466-1.122-.638-1.536-.168-.405-.333-.35-.465-.357-.12-.007-.257-.007-.393-.007-.137 0-.36.051-.549.258-.19.208-.724.708-.724 1.728 0 1.02.742 2.008.845 2.146.103.138 1.46 2.23 3.537 3.125.495.213.88.34 1.18.435.498.158.951.135 1.309.083.399-.058 1.202-.492 1.372-1.003.17-.512.17-.951.12-1.003-.05-.052-.189-.101-.392-.202z"/>
               </svg>
@@ -608,7 +608,7 @@ export default function Home({ setCurrentPage, navigateToSection }) {
           <h2>Ready to Experience Premium Salon Services?</h2>
           <p>Book your slot now on WhatsApp or call our support team to consult our beauty & hair specialists.</p>
           <div class="cta-banner-actions">
-            <a href="https://wa.me/919014540296?text=Hi%2C%20The%20Unique%20Salon.%20I'd%20like%20to%20book%20an%20appointment!" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" id="footer-whatsapp-btn">
+            <a href="https://wa.me/918500237031?text=Hi%2C%20The%20Unique%20Salon.%20I'd%20like%20to%20book%20an%20appointment!" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" id="footer-whatsapp-btn">
               <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}>
                 <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.949h.004c4.368 0 7.927-3.558 7.93-7.927a7.86 7.86 0 0 0-2.327-5.596zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.69-4.98c-.202-.101-1.202-.594-1.392-.658-.189-.069-.327-.103-.465.101-.138.203-.534.659-.653.793-.12.134-.239.151-.44.051-.2-.1-0.849-.312-1.616-.997-.598-.533-.999-1.193-1.117-1.396-.118-.2-.013-.309.088-.409.09-.09.201-.234.301-.35.1-.117.133-.198.2-.33.067-.133.033-.25-.017-.35-.05-.101-.466-1.122-.638-1.536-.168-.405-.333-.35-.465-.357-.12-.007-.257-.007-.393-.007-.137 0-.36.051-.549.258-.19.208-.724.708-.724 1.728 0 1.02.742 2.008.845 2.146.103.138 1.46 2.23 3.537 3.125.495.213.88.34 1.18.435.498.158.951.135 1.309.083.399-.058 1.202-.492 1.372-1.003.17-.512.17-.951.12-1.003-.05-.052-.189-.101-.392-.202z"/>
               </svg>
