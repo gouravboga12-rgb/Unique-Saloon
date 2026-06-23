@@ -184,10 +184,10 @@ const GALLERY_IMAGES = [
   { id: 2, src: '/assets/images/salon_interior.png', alt: 'Premium Salon Interior Vibe', title: 'Luxurious Salon Layout', category: 'interior', categoryLabel: 'Salon Ambience' },
   { id: 3, src: '/assets/images/beauty_service.png', alt: 'Bridal Makeup Glow', title: 'Bridal Glow Makeover', category: 'makeup', categoryLabel: 'Groom & Bridal Makeup' },
   { id: 4, src: '/assets/images/hero_bg.png', alt: 'Modern Hair Styling Design', title: 'Chic Women Styling', category: 'hair', categoryLabel: 'Hair Styling' },
-  { id: 5, src: '/assets/images/beauty_service.png', alt: 'Premium Facial Skincare Session', title: 'Premium Facial Therapy', category: 'beauty', categoryLabel: 'Beauty & Facials' },
-  { id: 6, src: '/assets/images/hair_service.png', alt: 'Groom Beard Styling & Face Care', title: 'Groom Styling Package', category: 'makeup', categoryLabel: 'Groom & Bridal Makeup' },
+  { id: 5, src: '/assets/images/services/facial_cleanup_men.png', alt: 'Premium Facial Skincare Session', title: 'Premium Facial Therapy', category: 'beauty', categoryLabel: 'Beauty & Facials' },
+  { id: 6, src: '/assets/images/services/groom_makeup.png', alt: 'Groom Beard Styling & Face Care', title: 'Groom Styling Package', category: 'makeup', categoryLabel: 'Groom & Bridal Makeup' },
   { id: 7, src: '/assets/images/hero_bg.png', alt: 'Stylist Stations Mirror Layout', title: 'Gold Accented Mirrors', category: 'interior', categoryLabel: 'Salon Ambience' },
-  { id: 8, src: '/assets/images/salon_interior.png', alt: 'Smooth hair texture treatment result', title: 'Keratin Smoothening', category: 'hair', categoryLabel: 'Hair Styling' }
+  { id: 8, src: '/assets/images/services/hair_smoothening_men.png', alt: 'Smooth hair texture treatment result', title: 'Keratin Smoothening', category: 'hair', categoryLabel: 'Hair Styling' }
 ];
 
 const TESTIMONIALS = [
@@ -495,7 +495,7 @@ export default function Home({ setCurrentPage, navigateToSection }) {
             <article class="service-card" data-aos="fade-up" data-aos-delay="300">
               <div class="service-card-img-wrapper">
                 <span class="service-card-tag">Grooming</span>
-                <img src="/assets/images/salon_interior.png" alt="Haircuts and Styling Services" class="service-card-img" width="380" height="240" />
+                <img src="/assets/images/services/haircut_trim_men.png" alt="Haircuts and Styling Services" class="service-card-img" width="380" height="240" />
               </div>
               <div class="service-card-body">
                 <h3 class="service-card-title">Haircuts & Styling</h3>

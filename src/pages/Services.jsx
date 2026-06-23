@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
 
 const HAIR_SERVICES = [
-  { name: 'Haircuts & Trim', desc: 'Customized styling haircuts tailored to facial structure, including blowdry style setting for men and women.', image: '/assets/images/services/haircut_trim.png' },
+  { name: 'Haircuts & Trim', desc: 'Customized styling haircuts tailored to facial structure, including blowdry style setting for men and women.', image: '/assets/images/services/haircut_trim_men.png' },
   { name: 'Hairstyles & Setting', desc: 'Party curls, braids, elegant buns, blowouts, and iron-straightening styles for special celebrations.', image: '/assets/images/services/hairstyle_setting.png' },
-  { name: 'Hair Coloring', desc: 'Premium grey coverage, root touches, and full global coloring with ammonia-free, hair-safe products.', image: '/assets/images/services/hair_coloring.png' },
+  { name: 'Hair Coloring', desc: 'Premium grey coverage, root touches, and full global coloring with ammonia-free, hair-safe products.', image: '/assets/images/services/hair_coloring_men.png' },
   { name: 'Fashion Coloring', desc: 'Trendy highlights, Balayage, Ombre, and customized styling tones to match your style personality.', image: '/assets/images/services/fashion_coloring.png' },
-  { name: 'Deep Therapy Hair Spa', desc: 'Deep scalp nourishment, anti-dandruff treatments, hair root hydration, massage, and steam therapy.', image: '/assets/images/services/hair_spa.png' },
+  { name: 'Deep Therapy Hair Spa', desc: 'Deep scalp nourishment, anti-dandruff treatments, hair root hydration, massage, and steam therapy.', image: '/assets/images/services/hair_spa_men.png' },
   { name: 'Hair Smoothening', desc: 'Eliminate frizz and get permanent silky, straight hair using professional salon formulas.', image: '/assets/images/services/hair_smoothening.png' },
-  { name: 'Keratin Protein Therapy', desc: 'Advanced protein infusing system to repair damage, restore elasticity, and add maximum gloss and shine.', image: '/assets/images/services/keratin_therapy.png' },
+  { name: 'Keratin Protein Therapy', desc: 'Advanced protein infusing system to repair damage, restore elasticity, and add maximum gloss and shine.', image: '/assets/images/services/keratin_therapy_men.png' },
   { name: 'Hair Botox Treatment', desc: 'The absolute premier moisturizing makeover. Smooths hair structure, heals split ends, and adds high-volume gloss.', image: '/assets/images/services/hair_botox.png' },
   { name: 'Blow Dry & Volume', desc: 'Wash, condition, styling blowout, and volume settings for quick, fresh professional styles.', image: '/assets/images/services/blow_dry.png' }
 ];
 
 const BEAUTY_SERVICES = [
-  { name: 'Facials & Cleanups', desc: 'Luxury skincare facials (O3+, Lotus, Herbals) to brighten, cleanse, and rejuvenate tired skin.', image: '/assets/images/services/facial_cleanup.png' },
+  { name: 'Facials & Cleanups', desc: 'Luxury skincare facials (O3+, Lotus, Herbals) to brighten, cleanse, and rejuvenate tired skin.', image: '/assets/images/services/facial_cleanup_men.png' },
   { name: 'Hygienic Waxing', desc: 'Full body, legs, or arms waxing using Rica wax or premium honey wax to protect sensitive skin tissues.', image: '/assets/images/services/waxing.png' },
   { name: 'Eyebrow Shaping', desc: 'Micro-precision threading to map out and clean eyebrow arches, matching facial dynamics.', image: '/assets/images/services/eyebrows.png' },
   { name: 'Facial Threading', desc: 'Upper lip, chin, forehead, or full-face organic threading using high-quality antibacterial threads.', image: '/assets/images/services/threading_face.png' },
-  { name: 'Soak & Scrub Pedicure', desc: 'Hygienic foot tubs, cuticle grooming, heel scrubbing, herbal massage, and professional polishing.', image: '/assets/images/services/pedicure.png' },
-  { name: 'Nail & Hand Manicure', desc: 'Cuticle oil soak, fingernail trimming/shaping, hand massage, and moisturizing polish protection.', image: '/assets/images/services/manicure.png' }
+  { name: 'Soak & Scrub Pedicure', desc: 'Hygienic foot tubs, cuticle grooming, heel scrubbing, herbal massage, and professional polishing.', image: '/assets/images/services/pedicure_men.png' },
+  { name: 'Nail & Hand Manicure', desc: 'Cuticle oil soak, fingernail trimming/shaping, hand massage, and moisturizing polish protection.', image: '/assets/images/services/manicure_men.png' }
 ];
 
 const MENS_SERVICES = [

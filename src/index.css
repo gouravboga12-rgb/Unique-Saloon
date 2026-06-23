@@ -186,7 +186,6 @@ img {
   left: 0;
   width: 100%;
   background-color: #111111;
-  border-bottom: 2px solid rgba(212, 175, 55, 0.35);
   z-index: 10000;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
   transition: var(--transition-smooth);
