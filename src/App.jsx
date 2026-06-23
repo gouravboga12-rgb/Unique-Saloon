@@ -59,7 +59,7 @@ export default function App() {
 
         el.style.opacity = '0';
         el.style.transform = initialTransform;
-        el.style.transition = 'opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1)';
+        el.style.transition = 'opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1), transform 1.8s cubic-bezier(0.25, 1, 0.5, 1)';
         const delay = el.getAttribute('data-aos-delay') || 0;
         el.style.transitionDelay = `${delay}ms`;
         el.setAttribute('data-aos-initialized', 'true');
