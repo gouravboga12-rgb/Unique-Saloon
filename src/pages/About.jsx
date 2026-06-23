@@ -1,10 +1,55 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+
+// Reusable count-up hook
+function useCountUp(target, suffix = '', duration = 1800) {
+  const ref = useRef(null);
+  const animated = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !animated.current) {
+        animated.current = true;
+        const isK = suffix.includes('k');
+        const numTarget = isK ? parseInt(target) * 1000 : parseInt(target);
+        const startTime = performance.now();
+
+        const tick = (now) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * numTarget);
+          const display = isK
+            ? (current >= 1000 ? Math.floor(current / 1000) + 'k' : current)
+            : current;
+          el.textContent = display + '+';
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+        observer.disconnect();
+      }
+    }, { threshold: 0.4 });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, suffix, duration]);
+
+  return ref;
+}
 
 export default function About({ setCurrentPage }) {
   const navigateTo = (page) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const yearsRef = useCountUp('6', '+', 1200);
+  const clientsRef = useCountUp('10', 'k+', 1800);
+  const stylistsRef = useCountUp('12', '+', 1500);
 
   return (
     <>
@@ -27,18 +72,18 @@ export default function About({ setCurrentPage }) {
               <h2 class="section-title" style={{ display: 'block', width: '100%', textAlign: 'left', marginBottom: '2rem' }}>The Journey of THE UNIQUE SALON</h2>
               <p>Founded on a passion for excellence in hair care and cosmetology, THE UNIQUE SALON has evolved into the absolute favorite family groomers in Hastinapuram, Hyderabad. Over our six-plus years of operations, we have maintained a philosophy that combines premium luxury treatments with accessible, budget-conscious prices.</p>
               <p>Our journey began with a single mission: to create a comfortable, clinical-grade hygienic space where men, women, and families could receive tailored styles without compromise. Today, our salon boasts a community of thousands of regular customers, thanks to our expert stylists and premium cosmetic products.</p>
-              
+
               <div class="story-highlights">
                 <div class="story-highlight-card">
-                  <span class="story-highlight-num">6+</span>
+                  <span class="story-highlight-num" ref={yearsRef}>6+</span>
                   <span class="story-highlight-label">Years Open</span>
                 </div>
                 <div class="story-highlight-card">
-                  <span class="story-highlight-num">10k+</span>
+                  <span class="story-highlight-num" ref={clientsRef}>10k+</span>
                   <span class="story-highlight-label">Happy Clients</span>
                 </div>
                 <div class="story-highlight-card">
-                  <span class="story-highlight-num">12+</span>
+                  <span class="story-highlight-num" ref={stylistsRef}>12+</span>
                   <span class="story-highlight-label">Expert Stylists</span>
                 </div>
               </div>
@@ -49,6 +94,7 @@ export default function About({ setCurrentPage }) {
           </div>
         </div>
       </section>
+
 
       {/* Founder Message Section */}
       <section class="section section-bg-soft" id="founder-section">
