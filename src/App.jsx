@@ -19,64 +19,81 @@ export default function App() {
 
   // Lightweight scroll animation — replaces AOS entirely
   useEffect(() => {
-    // On mobile, skip animations — make everything visible immediately
-    const isMobile = window.innerWidth < 768;
-    const elements = document.querySelectorAll('[data-aos]');
+    let observer;
 
-    if (isMobile) {
-      // Just remove data-aos so nothing stays hidden
-      elements.forEach(el => {
-        el.removeAttribute('data-aos');
-        el.removeAttribute('data-aos-delay');
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.style.transition = 'none';
-      });
-      return;
-    }
+    const setupAnimations = () => {
+      const isMobile = window.innerWidth < 768;
+      const elements = document.querySelectorAll('[data-aos]');
 
-    // Desktop & Tablet: fade-in with IntersectionObserver based on animation direction
-    elements.forEach(el => {
-      const aosType = el.getAttribute('data-aos') || 'fade-up';
-      let initialTransform = 'translateY(25px)';
-      
-      if (aosType === 'fade-left') {
-        initialTransform = 'translateX(25px)';
-      } else if (aosType === 'fade-right') {
-        initialTransform = 'translateX(-25px)';
-      } else if (aosType === 'fade-down') {
-        initialTransform = 'translateY(-25px)';
-      } else if (aosType === 'zoom-in') {
-        initialTransform = 'scale(0.96)';
-      } else if (aosType === 'zoom-out') {
-        initialTransform = 'scale(1.04)';
-      } else if (aosType === 'fade') {
-        initialTransform = 'none';
+      if (isMobile) {
+        elements.forEach(el => {
+          el.removeAttribute('data-aos');
+          el.removeAttribute('data-aos-delay');
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+          el.style.transition = 'none';
+        });
+        return;
       }
 
-      el.style.opacity = '0';
-      el.style.transform = initialTransform;
-      el.style.transition = 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)';
-      const delay = el.getAttribute('data-aos-delay') || 0;
-      el.style.transitionDelay = `${delay}ms`;
-    });
+      elements.forEach(el => {
+        // Skip if already initialized
+        if (el.getAttribute('data-aos-initialized') === 'true') return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'none';
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
+        const aosType = el.getAttribute('data-aos') || 'fade-up';
+        let initialTransform = 'translateY(15px)';
+        
+        if (aosType === 'fade-left') {
+          initialTransform = 'translateX(15px)';
+        } else if (aosType === 'fade-right') {
+          initialTransform = 'translateX(-15px)';
+        } else if (aosType === 'fade-down') {
+          initialTransform = 'translateY(-15px)';
+        } else if (aosType === 'zoom-in') {
+          initialTransform = 'scale(0.97)';
+        } else if (aosType === 'zoom-out') {
+          initialTransform = 'scale(1.03)';
+        } else if (aosType === 'fade') {
+          initialTransform = 'none';
+        }
 
-    elements.forEach(el => observer.observe(el));
+        el.style.opacity = '0';
+        el.style.transform = initialTransform;
+        el.style.transition = 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)';
+        const delay = el.getAttribute('data-aos-delay') || 0;
+        el.style.transitionDelay = `${delay}ms`;
+        el.setAttribute('data-aos-initialized', 'true');
+      });
 
-    return () => observer.disconnect();
+      // Use threshold: 0 to ensure large elements don't get stuck hidden
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'none';
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: '0px 0px -20px 0px' }
+      );
+
+      elements.forEach(el => {
+        if (el.style.opacity === '0') {
+          observer.observe(el);
+        }
+      });
+    };
+
+    // Setup animations immediately and with a slight delay for lazy/late renders
+    setupAnimations();
+    const timer = setTimeout(setupAnimations, 150);
+
+    return () => {
+      clearTimeout(timer);
+      if (observer) observer.disconnect();
+    };
   }, [currentPage]);
 
   const renderPage = () => {
