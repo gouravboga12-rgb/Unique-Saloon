@@ -125,9 +125,21 @@ export default function Home({ setCurrentPage, navigateToSection }) {
               </svg>
               Book Now
             </a>
-            <button onClick={() => navigateTo('services')} class="btn btn-secondary" id="hero-services-btn" style={{ background: 'transparent', cursor: 'pointer' }}>
+            <button 
+              onClick={() => navigateTo('services')} 
+              class="btn" 
+              id="hero-services-btn" 
+              style={{ 
+                background: 'transparent', 
+                cursor: 'pointer', 
+                color: '#ffffff',
+                border: '2px solid #D4AF37',
+                fontWeight: '600',
+                letterSpacing: '0.04em'
+              }}
+            >
               <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '6px' }}>
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
               </svg>
               View All Services
             </button>
