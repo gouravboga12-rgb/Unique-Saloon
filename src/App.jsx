@@ -7,8 +7,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -19,25 +17,48 @@ export default function App() {
     setCurrentPage(page);
   };
 
+  // Lightweight scroll animation — replaces AOS entirely
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      easing: 'ease-out-cubic',
-      offset: 50,
-      disable: function() {
-        // Disable AOS on small mobile screens to prevent elements staying hidden
-        return window.innerWidth < 768;
-      }
-    });
-  }, []);
+    // On mobile, skip animations — make everything visible immediately
+    const isMobile = window.innerWidth < 768;
+    const elements = document.querySelectorAll('[data-aos]');
 
-  useEffect(() => {
-    // Wait slightly for DOM to update after state change
-    const timer = setTimeout(() => {
-      AOS.refresh();
-    }, 50);
-    return () => clearTimeout(timer);
+    if (isMobile) {
+      // Just remove data-aos so nothing stays hidden
+      elements.forEach(el => {
+        el.removeAttribute('data-aos');
+        el.removeAttribute('data-aos-delay');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.transition = 'none';
+      });
+      return;
+    }
+
+    // Desktop: fade-in with IntersectionObserver
+    elements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      const delay = el.getAttribute('data-aos-delay') || 0;
+      el.style.transitionDelay = `${delay}ms`;
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'none';
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    elements.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
   }, [currentPage]);
 
   const renderPage = () => {
