@@ -112,7 +112,7 @@ export default function Services({ targetSection, setTargetSection }) {
           </div>
           <div class="featured-services-grid">
             {/* Card 1: Hair Services */}
-            <article class="service-card">
+            <article class="service-card" data-aos="fade-up" data-aos-delay="100">
               <div class="service-card-img-wrapper">
                 <span class="service-card-tag">Hair Care</span>
                 <img src="/assets/images/services/hair_smoothening.png" alt="Premium Hair Treatments" class="service-card-img" width="380" height="240" />
@@ -136,7 +136,7 @@ export default function Services({ targetSection, setTargetSection }) {
             </article>
 
             {/* Card 2: Bridal & Makeup */}
-            <article class="service-card">
+            <article class="service-card" data-aos="fade-up" data-aos-delay="200">
               <div class="service-card-img-wrapper">
                 <span class="service-card-tag">Makeup</span>
                 <img src="/assets/images/services/bridal_makeup.png" alt="Bridal & Special Occasions" class="service-card-img" width="380" height="240" />
@@ -160,7 +160,7 @@ export default function Services({ targetSection, setTargetSection }) {
             </article>
 
             {/* Card 3: Beauty & Grooming */}
-            <article class="service-card">
+            <article class="service-card" data-aos="fade-up" data-aos-delay="300">
               <div class="service-card-img-wrapper">
                 <span class="service-card-tag">Grooming & Beauty</span>
                 <img src="/assets/images/services/beard_trim.png" alt="Haircuts, Grooming & Beauty" class="service-card-img" width="380" height="240" />

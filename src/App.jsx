@@ -35,11 +35,28 @@ export default function App() {
       return;
     }
 
-    // Desktop: fade-in with IntersectionObserver
+    // Desktop & Tablet: fade-in with IntersectionObserver based on animation direction
     elements.forEach(el => {
+      const aosType = el.getAttribute('data-aos') || 'fade-up';
+      let initialTransform = 'translateY(25px)';
+      
+      if (aosType === 'fade-left') {
+        initialTransform = 'translateX(25px)';
+      } else if (aosType === 'fade-right') {
+        initialTransform = 'translateX(-25px)';
+      } else if (aosType === 'fade-down') {
+        initialTransform = 'translateY(-25px)';
+      } else if (aosType === 'zoom-in') {
+        initialTransform = 'scale(0.96)';
+      } else if (aosType === 'zoom-out') {
+        initialTransform = 'scale(1.04)';
+      } else if (aosType === 'fade') {
+        initialTransform = 'none';
+      }
+
       el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      el.style.transform = initialTransform;
+      el.style.transition = 'opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1)';
       const delay = el.getAttribute('data-aos-delay') || 0;
       el.style.transitionDelay = `${delay}ms`;
     });
@@ -54,10 +71,11 @@ export default function App() {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
 
     elements.forEach(el => observer.observe(el));
+
     return () => observer.disconnect();
   }, [currentPage]);
 
