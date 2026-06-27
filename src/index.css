@@ -530,6 +530,196 @@ img {
   color: var(--text-muted);
 }
 
+/* Virtual Tour & Ambiance Section */
+.virtual-tour-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.virtual-tour-video-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-mockup-wrapper {
+  position: relative;
+  width: 300px;
+  height: 533px; /* 9:16 aspect ratio */
+  background: #1a1a1a;
+  border: 12px solid #282828;
+  border-radius: 40px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.15);
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.phone-mockup-wrapper:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.8), 0 0 50px rgba(212, 175, 55, 0.25);
+  border-color: #333333;
+}
+
+.phone-mockup-screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+.tour-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 20px;
+  background: #282828;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.phone-mockup-wrapper:hover .phone-notch {
+  background: #333333;
+}
+
+.video-play-overlay-btn {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.85);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+  z-index: 8;
+  outline: none;
+}
+
+.video-play-overlay-btn:hover {
+  transform: scale(1.12);
+  background: rgba(212, 175, 55, 1);
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.7);
+}
+
+.play-icon-triangle {
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 19px solid #000;
+  margin-left: 6px;
+}
+
+.video-custom-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 14px;
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.phone-mockup-screen:hover .video-custom-controls {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.control-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: background-color 0.2s, transform 0.2s;
+  outline: none;
+}
+
+.control-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.control-btn svg {
+  display: block;
+}
+
+.tour-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.tour-feature-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.tour-feature-icon {
+  font-size: 1.25rem;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--primary-gold);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tour-feature-text h4 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  margin: 0 0 0.35rem 0;
+  letter-spacing: 0.02em;
+}
+
+.tour-feature-text p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
 /* Featured Services */
 .featured-services-grid {
   display: grid;
@@ -1705,6 +1895,10 @@ textarea.form-control {
 
 /* Tablet Portrait & Small Desktop */
 @media (max-width: 1024px) {
+  .virtual-tour-grid {
+    gap: 2.5rem;
+  }
+
   .about-preview-grid {
     gap: 3rem;
   }
@@ -1754,6 +1948,11 @@ textarea.form-control {
 
 /* Mobile Devices (Tablet Portrait down to Phone) */
 @media (max-width: 768px) {
+  .virtual-tour-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
   /* Mobile header is ~75px tall */
   main {
     padding-top: 75px;

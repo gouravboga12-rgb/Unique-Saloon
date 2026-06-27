@@ -105,7 +105,7 @@ export default function App() {
       case 'services':
         return <Services targetSection={targetSection} setTargetSection={setTargetSection} />;
       case 'contact':
-        return <Contact />;
+        return <Contact targetSection={targetSection} setTargetSection={setTargetSection} />;
       default:
         return <Home setCurrentPage={setCurrentPage} navigateToSection={navigateToSection} />;
     }

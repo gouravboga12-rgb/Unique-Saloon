@@ -180,14 +180,15 @@ function HomeContactSection() {
 // ------------------------------------
 
 const GALLERY_IMAGES = [
-  { id: 1, src: '/assets/images/hair_service.png', alt: 'Fashion Hair Coloring Makeover', title: 'Fashion Hair Coloring', category: 'hair', categoryLabel: 'Hair Styling' },
-  { id: 2, src: '/assets/images/salon_interior.png', alt: 'Premium Salon Interior Vibe', title: 'Luxurious Salon Layout', category: 'interior', categoryLabel: 'Salon Ambience' },
-  { id: 3, src: '/assets/images/beauty_service.png', alt: 'Bridal Makeup Glow', title: 'Bridal Glow Makeover', category: 'makeup', categoryLabel: 'Groom & Bridal Makeup' },
-  { id: 4, src: '/assets/images/hero_bg.png', alt: 'Modern Hair Styling Design', title: 'Chic Women Styling', category: 'hair', categoryLabel: 'Hair Styling' },
-  { id: 5, src: '/assets/images/services/facial_cleanup_men.png', alt: 'Premium Facial Skincare Session', title: 'Premium Facial Therapy', category: 'beauty', categoryLabel: 'Beauty & Facials' },
-  { id: 6, src: '/assets/images/services/groom_makeup.png', alt: 'Groom Beard Styling & Face Care', title: 'Groom Styling Package', category: 'makeup', categoryLabel: 'Groom & Bridal Makeup' },
-  { id: 7, src: '/assets/images/hero_bg.png', alt: 'Stylist Stations Mirror Layout', title: 'Gold Accented Mirrors', category: 'interior', categoryLabel: 'Salon Ambience' },
-  { id: 8, src: '/assets/images/services/hair_smoothening_men.png', alt: 'Smooth hair texture treatment result', title: 'Keratin Smoothening', category: 'hair', categoryLabel: 'Hair Styling' }
+  { id: 1, src: '/assets/images/gallery/gallery_1.webp', alt: 'Premium Styling Stations with backlit mirrors', title: 'Premium Styling Stations', category: 'interior', categoryLabel: 'Salon Ambience' },
+  { id: 2, src: '/assets/images/gallery/gallery_2.webp', alt: 'Luxurious reception and welcome lounge', title: 'Reception & Welcome Lounge', category: 'interior', categoryLabel: 'Salon Ambience' },
+  { id: 3, src: '/assets/images/gallery/gallery_3.webp', alt: 'Private beauty facial and massage room', title: 'Luxury Facial & Spa Suite', category: 'beauty', categoryLabel: 'Beauty & Facials' },
+  { id: 4, src: '/assets/images/gallery/gallery_4.webp', alt: 'Executive grooming stations and styling chairs', title: 'Executive Styling Area', category: 'interior', categoryLabel: 'Salon Ambience' },
+  { id: 5, src: '/assets/images/gallery/gallery_5.webp', alt: 'Advanced hair wash basins and conditioning chairs', title: 'Advanced Hair Wash & Spa Zone', category: 'hair', categoryLabel: 'Hair Styling' },
+  { id: 6, src: '/assets/images/gallery/gallery_6.webp', alt: 'Professional hair styling stations with mirrors', title: 'Modern Styling Stations', category: 'interior', categoryLabel: 'Salon Ambience' },
+  { id: 7, src: '/assets/images/gallery/gallery_7.webp', alt: 'Sleek salon entrance with glass partition', title: 'Pristine Salon Entrance', category: 'interior', categoryLabel: 'Salon Ambience' },
+  { id: 8, src: '/assets/images/gallery/gallery_8.webp', alt: 'Spacious waiting lounge with black leather sofa', title: 'Spacious Waiting Lounge', category: 'interior', categoryLabel: 'Salon Ambience' },
+  { id: 9, src: '/assets/images/gallery/gallery_9.webp', alt: 'Elite styling stations perspective view', title: 'Elite Grooming Stations', category: 'interior', categoryLabel: 'Salon Ambience' }
 ];
 
 const TESTIMONIALS = [
@@ -224,6 +225,28 @@ export default function Home({ setCurrentPage, navigateToSection }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const sliderInterval = useRef(null);
   const startTouchX = useRef(0);
+
+  // Video player states
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
+
+  const handlePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play().catch(err => console.log("Video play failed:", err));
+      }
+    }
+  };
+
+  const handleMuteToggle = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
 
   // Filter gallery items
   const filteredGallery = GALLERY_IMAGES.filter(img => 
@@ -443,6 +466,117 @@ export default function Home({ setCurrentPage, navigateToSection }) {
               </div>
               <h3 class="why-us-title">Affordable Luxury</h3>
               <p class="why-us-text">Experience absolute high-end salon vibes and styling at prices that fit family budgets comfortably.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Virtual Tour & Ambiance Section */}
+      <section class="section section-bg-soft" id="virtual-tour-section" style={{ paddingBottom: '5rem' }}>
+        <div class="container-wide">
+          <div class="virtual-tour-grid">
+            {/* Video Column */}
+            <div class="virtual-tour-video-col" data-aos="fade-right">
+              <div class="phone-mockup-wrapper">
+                <div class="phone-mockup-screen">
+                  <video
+                    ref={videoRef}
+                    class="tour-video"
+                    preload="none"
+                    poster="/assets/videos/saloon_tour_poster.webp"
+                    playsInline
+                    loop
+                    muted={isMuted}
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                  >
+                    <source src="/assets/videos/saloon_tour.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  
+                  {/* Custom Play/Pause Overlay */}
+                  {!isPlaying && (
+                    <button class="video-play-overlay-btn" onClick={handlePlayPause} aria-label="Play virtual tour video">
+                      <span class="play-icon-triangle"></span>
+                    </button>
+                  )}
+
+                  {/* Top Bar Speaker Notch Mock */}
+                  <div class="phone-notch"></div>
+                  
+                  {/* Custom Controls inside Screen */}
+                  <div class="video-custom-controls">
+                    <button class="control-btn play-pause-btn" onClick={handlePlayPause} aria-label={isPlaying ? "Pause" : "Play"}>
+                      {isPlaying ? (
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+                        </svg>
+                      ) : (
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                        </svg>
+                      )}
+                    </button>
+                    <button class="control-btn mute-btn" onClick={handleMuteToggle} aria-label={isMuted ? "Unmute" : "Mute"}>
+                      {isMuted ? (
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                      ) : (
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M11.536 14.01A8.473 8.473 0 0 0 14 8c0-2.29-.904-4.37-2.37-5.877a.5.5 0 1 1 .707-.707A9.475 9.475 0 0 1 15 8a9.475 9.475 0 0 1-2.757 6.717.5.5 0 0 1-.707-.707zm-2.122-2.122A5.474 5.474 0 0 0 11 8c0-1.48-.59-2.82-1.543-3.805a.5.5 0 0 1 .707-.707A6.475 6.475 0 0 1 12 8a6.475 6.475 0 0 1-1.879 4.596.5.5 0 0 1-.707-.707zM8 5.5a.5.5 0 0 1 .1-.01c.244-.014.45.08.6.22.15.14.25.37.25.79v3c0 .42-.1.65-.25.79-.15.14-.356.234-.6.22H8V5.5zm3-.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                        </svg>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Content Column */}
+            <div class="virtual-tour-content-col" data-aos="fade-left">
+              <span class="section-subtitle">Experience The Vibe</span>
+              <h2 class="section-title" style={{ display: 'block', textAlign: 'left', margin: '0 0 1.5rem' }}>Take A Virtual Tour of Our Salon</h2>
+              <p class="lead">Step inside Hastinapuram's favorite family salon. See the luxury, cleanliness, and modern style we offer.</p>
+              <p>Our video tour highlights the premium architecture and sanitary guidelines we follow. Explore the spacing, backlit styling stations, private pampering suites, and child-safe environment before you book your slot.</p>
+              
+              <div class="tour-features">
+                <div class="tour-feature-item">
+                  <div class="tour-feature-icon">✨</div>
+                  <div class="tour-feature-text">
+                    <h4>Ultra-Modern Ambiance</h4>
+                    <p>Designed with golden lighting, rich textures, and sleek black styling chairs for a premium feel.</p>
+                  </div>
+                </div>
+                <div class="tour-feature-item">
+                  <div class="tour-feature-icon">🧴</div>
+                  <div class="tour-feature-text">
+                    <h4>Clinical Sanitization</h4>
+                    <p>Every tool, sink, chair, and station is rigorously disinfected between guest sessions.</p>
+                  </div>
+                </div>
+                <div class="tour-feature-item">
+                  <div class="tour-feature-icon">💆</div>
+                  <div class="tour-feature-text">
+                    <h4>Dedicated Spa & Wash Zones</h4>
+                    <p>Comfortable reclining washing chairs and private treatment rooms for ultimate relaxation.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tour-cta-wrapper" style={{ marginTop: '2.5rem' }}>
+                <button 
+                  onClick={() => navigateTo('contact', 'booking-section')} 
+                  class="btn btn-primary"
+                  id="tour-booking-cta"
+                  style={{ display: 'inline-flex', alignItems: 'center' }}
+                >
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style={{ marginRight: '8px' }}>
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5v1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                  </svg>
+                  Book Appointment Now
+                </button>
+              </div>
             </div>
           </div>
         </div>

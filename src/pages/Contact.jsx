@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SERVICES_LIST = [
   'Haircuts & Trim',
@@ -24,7 +24,21 @@ const SERVICES_LIST = [
   'Other / Custom Consultation'
 ];
 
-export default function Contact() {
+export default function Contact({ targetSection, setTargetSection }) {
+  useEffect(() => {
+    if (targetSection) {
+      setTimeout(() => {
+        const element = document.getElementById(targetSection);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        if (setTargetSection) {
+          setTargetSection(null);
+        }
+      }, 100);
+    }
+  }, [targetSection, setTargetSection]);
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
